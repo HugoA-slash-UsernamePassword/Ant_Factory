@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1282686540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1282686541}
+  m_Layer: 0
+  m_Name: Layer Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1282686541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282686540}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7541003112109587821}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7541003112109587816
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +60,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1282686541}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -98,6 +129,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pattern: 2
+  layerPrefab: {fileID: 5395105767551436404, guid: 8332f4caa2ec16d419c3cb8f587912e7,
+    type: 3}
+  layerSpawnPoint: {fileID: 1282686541}
+  nonePattern: {fileID: -4758300303186549191, guid: b2e9bf27a8b13984ca0087a0bab4c23a,
+    type: 3}
+  spotsPattern: {fileID: 9200234285900161953, guid: b2e9bf27a8b13984ca0087a0bab4c23a,
+    type: 3}
+  stripesPattern: {fileID: 7759380681061913140, guid: b2e9bf27a8b13984ca0087a0bab4c23a,
+    type: 3}
+  specklesPattern: {fileID: -3501907027662496848, guid: b2e9bf27a8b13984ca0087a0bab4c23a,
+    type: 3}
 --- !u!61 &1110725384
 BoxCollider2D:
   m_ObjectHideFlags: 0
