@@ -20,6 +20,7 @@ public class Editor : MonoBehaviour
     private int[,] spawnGrid;
     public Vector2Int launchPos;
     public Vector2Int[] paintPos;
+    public bool editing;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class Editor : MonoBehaviour
 
     void Update()
     {
+        if(!editing) return;
         move.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         move.position = (Vector2)move.position;
         //Vector2Int closestGrid = new Vector2Int(Mathf.RoundToInt(move.position.x), Mathf.RoundToInt(move.position.y));
@@ -76,8 +78,10 @@ public class Editor : MonoBehaviour
         if (Mathf.Clamp(p.x, 0, levelSize.x) == p.x && Mathf.Clamp(p.y, 0, levelSize.y) == p.y) return true;
         else return false;
     }
-    public void SetTiles()
+    public void SetTiles() //AKA manual start/retry
     {
+        editing = !editing;
+        if(editing == true) { UnsetTiles(); return; }
         spriteParent.gameObject.SetActive(false);
         prefabParent = new GameObject().transform;
         for (int x = 0; x < grid.GetLength(0); x++)
@@ -91,8 +95,9 @@ public class Editor : MonoBehaviour
             }
         }
     }
-    public void UnsetTiles() //AKA retry
+    public void UnsetTiles() //AKA automatic retry i think idk
     {
+        editing = true;
         Destroy(prefabParent);
         spriteParent.gameObject.SetActive(true);
     }
