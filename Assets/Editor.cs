@@ -24,8 +24,9 @@ public class Editor : MonoBehaviour
     void Start()
     {
         ChangeImg(curID);
-        grid = new SpriteRenderer[levelSize.x+1, levelSize.y+1];
-        spawnGrid = new int[levelSize.x+1, levelSize.y+1];
+        grid = new SpriteRenderer[levelSize.x, levelSize.y];
+        spawnGrid = new int[levelSize.x, levelSize.y];
+        levelSize -= Vector2Int.one;
     }
 
     void Update()
