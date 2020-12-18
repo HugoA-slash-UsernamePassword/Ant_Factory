@@ -10,7 +10,7 @@ public class Egg : MonoBehaviour
 
     [SerializeField] private Pattern pattern = Pattern.None;
 
-    private SpriteRenderer[] layers = new SpriteRenderer[numOfPatterns];
+    public SpriteRenderer[] layers = new SpriteRenderer[numOfPatterns];
 
     [SerializeField] GameObject layerPrefab;
     [SerializeField] Sprite nonePattern;
@@ -51,11 +51,11 @@ public class Egg : MonoBehaviour
         targetLayer.sortingOrder = numOfPatterns - 1;
     }
 
-    SpriteRenderer PatternToLayer (Pattern pattern) {
+    public SpriteRenderer PatternToLayer (Pattern pattern) {
         return layers[(int) pattern];   
     }
 
-    private Sprite PatternToSprite (Pattern pattern) {
+    public Sprite PatternToSprite (Pattern pattern) {
         switch (pattern) {
             case Pattern.None: return nonePattern;
             case Pattern.Spots: return spotsPattern;
