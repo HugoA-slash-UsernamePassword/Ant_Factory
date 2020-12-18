@@ -21,6 +21,8 @@ public class Editor : MonoBehaviour
     public Vector2Int launchPos;
     public Vector2Int[] paintPos;
     public bool editing;
+    public GameObject eggPrefab;
+    public GameObject egg;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +63,7 @@ public class Editor : MonoBehaviour
     }
     void Remove(int x, int y)
     {
-        if (!grid[x, y] || grid[x,y].sprite == sprites[0]) return;
+        if (!grid[x, y]) return;
         //if (!grid[x, y]) return; //although you can delete the paint, its funny so i think we should leave it in as a little easter egg.
         Destroy(grid[x, y].gameObject);
         grid[x, y] = null;
@@ -82,6 +84,7 @@ public class Editor : MonoBehaviour
     {
         editing = !editing;
         if(editing == true) { UnsetTiles(); return; }
+        egg = Instantiate(eggPrefab, new Vector2(-8, 0), Quaternion.identity);
         spriteParent.gameObject.SetActive(false);
         prefabParent = new GameObject().transform;
         for (int x = 0; x < grid.GetLength(0); x++)
@@ -97,6 +100,7 @@ public class Editor : MonoBehaviour
     }
     public void UnsetTiles() //AKA automatic retry i think idk
     {
+        if (egg) Destroy(egg);
         editing = true;
         Destroy(prefabParent);
         spriteParent.gameObject.SetActive(true);
