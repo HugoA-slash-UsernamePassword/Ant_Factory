@@ -17,12 +17,26 @@ public class Flipper : MonoBehaviour
     private Vector3 normalRotation;
     private Vector3 flippedRotation;
 
+    private AudioSource audio;
+
     private void Start () {
         hingeJoint2D = GetComponent<HingeJoint2D>();
         jointMotor = hingeJoint2D.motor;
 
         normalRotation = spriteTransform.rotation.eulerAngles;
         flippedRotation = new Vector3(normalRotation.x, normalRotation.y, normalRotation.z + 90);
+
+        audio = GetComponent<AudioSource>();
+    }
+
+    private void Update () {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            audio.Play();
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space)) {
+            audio.Stop();
+        }
     }
 
     private void FixedUpdate () {
