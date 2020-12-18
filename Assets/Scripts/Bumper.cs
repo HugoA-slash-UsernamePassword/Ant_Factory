@@ -5,9 +5,11 @@ using UnityEngine;
 public class Bumper : MonoBehaviour
 {
     private Animator animator;
+    private AudioSource audio;
 
     private void Start () {
         animator = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter2D (Collision2D col) {
@@ -18,5 +20,6 @@ public class Bumper : MonoBehaviour
 
     void Bounce () {
         animator.SetTrigger("Bounce");
+        audio.Play();
     }
 }
