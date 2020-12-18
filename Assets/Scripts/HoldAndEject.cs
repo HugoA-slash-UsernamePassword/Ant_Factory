@@ -13,12 +13,14 @@ public class HoldAndEject : MonoBehaviour
     [SerializeField] private Transform holdingPoint;
 
     private Animator animator;
+    private AudioSource audio;
 
     private Coroutine ejectRoutine;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter2D (Collider2D col) {
@@ -58,6 +60,8 @@ public class HoldAndEject : MonoBehaviour
         eggRB.AddForce(transform.up * ejectSpeed, ForceMode2D.Impulse);
         
         timer = 0;
+
+        audio.Play();
 
         while (timer < ejectCooldown) {
             timer += Time.deltaTime;
