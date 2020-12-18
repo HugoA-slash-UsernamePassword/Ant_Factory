@@ -102,7 +102,7 @@ public class Editor : MonoBehaviour
     {
         if (egg) Destroy(egg);
         editing = true;
-        Destroy(prefabParent);
+        Destroy(prefabParent.gameObject);
         spriteParent.gameObject.SetActive(true);
     }
 }
