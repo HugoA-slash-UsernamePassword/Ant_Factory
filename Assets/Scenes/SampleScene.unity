@@ -442,7 +442,7 @@ MonoBehaviour:
   spriteParent: {fileID: 802846236}
   prefabParent: {fileID: 0}
   curID: 1
-  levelSize: {x: 4, y: 4}
+  levelSize: {x: 16, y: 6}
   sprites:
   - {fileID: 21300000, guid: c626c5faa02588940bc570489958c5d6, type: 3}
   - {fileID: -9001327771895640228, guid: 35b2d229adacb0349a83ff45a23e96f9, type: 3}
