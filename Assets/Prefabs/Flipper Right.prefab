@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8084426394738834247}
   - component: {fileID: 8084426394738834244}
   - component: {fileID: 8084426394738834245}
-  - component: {fileID: 8084426394738834246}
+  - component: {fileID: 5333152851745360263}
   m_Layer: 0
   m_Name: Flipper
   m_TagString: Untagged
@@ -105,7 +105,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &8084426394738834246
+--- !u!60 &5333152851745360263
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,13 +130,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.25, y: 1.5}
-      - {x: -0.5625, y: 1.375}
-      - {x: -0.5625, y: 0.4375}
-      - {x: 0.875, y: -0.625}
-      - {x: 1.5, y: -0.625}
-      - {x: 1.5, y: 0.3125}
-      - {x: 0.5625, y: 1.5}
+    - - {x: 0.25, y: 1.5}
+      - {x: 0.5625, y: 1.375}
+      - {x: 0.5625, y: 0.4375}
+      - {x: -0.875, y: -0.625}
+      - {x: -1.5, y: -0.625}
+      - {x: -1.5, y: 0.3125}
+      - {x: -0.5625, y: 1.5}
 --- !u!1 &8084426395142639941
 GameObject:
   m_ObjectHideFlags: 0
