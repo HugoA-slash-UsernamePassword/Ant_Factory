@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Flipper : MonoBehaviour
 {
+    [SerializeField] bool flipped;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform spriteTransform;
     [SerializeField] private Sprite stationarySprite;
     [SerializeField] private Sprite movingUpSprite;
     [SerializeField] private Sprite movingDownSprite;
-
     [SerializeField] int speed;
     private HingeJoint2D hingeJoint2D;
     private JointMotor2D jointMotor;
@@ -27,17 +27,17 @@ public class Flipper : MonoBehaviour
 
     private void FixedUpdate () {
         if (Input.GetKey(KeyCode.Space)) {
-            jointMotor.motorSpeed = speed;
+            jointMotor.motorSpeed = flipped ? -speed : speed;
             hingeJoint2D.motor = jointMotor;
         } else {
-            jointMotor.motorSpeed = -speed;
+            jointMotor.motorSpeed = flipped ? speed : -speed;
             hingeJoint2D.motor = jointMotor;
         }
 
         if (hingeJoint2D.jointSpeed > 100) {
-            spriteRenderer.sprite = movingUpSprite;
-        } else if (hingeJoint2D.jointSpeed < - 100) {
-            spriteRenderer.sprite = movingDownSprite;
+            spriteRenderer.sprite = flipped ? movingDownSprite : movingUpSprite;
+        } else if (hingeJoint2D.jointSpeed < -100) {
+            spriteRenderer.sprite = flipped ? movingUpSprite : movingDownSprite;
         } else {
             spriteRenderer.sprite = stationarySprite;
         }
