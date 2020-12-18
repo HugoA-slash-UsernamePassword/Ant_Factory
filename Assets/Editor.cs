@@ -17,13 +17,15 @@ public class Editor : MonoBehaviour
     public Sprite[] sprites;
     public GameObject[] prefabs;
     private SpriteRenderer[,] grid;
+    private int[,] spawnGrid;
     public Vector2Int launchPos;
     public Vector2Int[] paintPos;
     // Start is called before the first frame update
     void Start()
     {
         ChangeImg(curID);
-        grid = new SpriteRenderer[5, 5];
+        grid = new SpriteRenderer[levelSize.x+1, levelSize.y+1];
+        spawnGrid = new int[levelSize.x+1, levelSize.y+1];
     }
 
     void Update()
@@ -52,6 +54,7 @@ public class Editor : MonoBehaviour
         grid[x, y].transform.position = new Vector2(x, y) - levelSize/2;
         grid[x, y].transform.parent = spriteParent;
         grid[x,y].sprite = sprites[ID];
+        spawnGrid[x, y] = ID+1;
     }
     void Remove(int x, int y)
     {
@@ -59,6 +62,7 @@ public class Editor : MonoBehaviour
         //if (!grid[x, y]) return; //although you can delete the paint, its funny so i think we should leave it in as a little easter egg.
         Destroy(grid[x, y].gameObject);
         grid[x, y] = null;
+        spawnGrid[x, y] = 0;
     }
     public void ChangeImg(int ID)
     {
@@ -73,15 +77,22 @@ public class Editor : MonoBehaviour
     }
     public void SetTiles()
     {
+        spriteParent.gameObject.SetActive(false);
+        prefabParent = new GameObject().transform;
         for (int x = 0; x < grid.GetLength(0); x++)
         {
             for (int y = 0; y < grid.GetLength(1); y++)
             {
-                if (grid[x, y])
+                if (grid[x, y] != null && spawnGrid[x, y] != 0)
                 {
-                    Instantiate()
+                    Instantiate(prefabs[spawnGrid[x, y]-1], new Vector2(x, y) - levelSize / 2, Quaternion.identity, prefabParent);
                 }
             }
         }
+    }
+    public void UnsetTiles() //AKA retry
+    {
+        Destroy(prefabParent);
+        spriteParent.gameObject.SetActive(true);
     }
 }
